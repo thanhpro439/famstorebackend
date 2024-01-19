@@ -216,47 +216,47 @@ mongoose.connect(
 //     });
 // });
 
-// // Creating API for getting all product endpoint
-// app.get('/allproducts', async (req, res) => {
-//   Product.find()
-//     .then((products) => {
-//       res.send(products);
-//     })
-//     .catch((error) => {
-//       console.error('Error finding products:', error);
-//       res.status(500).send({ error: 'Internal Server Error' });
-//     });
-// });
+// Creating API for getting all product endpoint
+app.get('/allproducts', async (req, res) => {
+  Product.find()
+    .then((products) => {
+      res.send(products);
+    })
+    .catch((error) => {
+      console.error('Error finding products:', error);
+      res.status(500).send({ error: 'Internal Server Error' });
+    });
+});
 
-// // Creating API for getting new collection product endpoint
-// app.get('/newcollection', async (req, res) => {
-//   try {
-//     let allproduct = await Product.find({});
-//     if (allproduct.length > 8) {
-//       let newcollection = allproduct.slice(-8).reverse();
-//       res.send(newcollection);
-//     } else {
-//       res.send(allproduct);
-//     }
-//   } catch (error) {
-//     res.status(500).send({ error: 'Internal Server Error' });
-//   }
-// });
+// Creating API for getting new collection product endpoint
+app.get('/newcollection', async (req, res) => {
+  try {
+    let allproduct = await Product.find({});
+    if (allproduct.length > 8) {
+      let newcollection = allproduct.slice(-8).reverse();
+      res.send(newcollection);
+    } else {
+      res.send(allproduct);
+    }
+  } catch (error) {
+    res.status(500).send({ error: 'Internal Server Error' });
+  }
+});
 
-// // Creating API for getting popular women product endpoint
-// app.get('/popular', async (req, res) => {
-//   try {
-//     let popularItems = await Product.find({ category: 'women' });
-//     if (popularItems.length > 4) {
-//       let popular = popularItems.slice(0, 4);
-//       res.send(popular);
-//     } else {
-//       res.send(popularItems);
-//     }
-//   } catch (error) {
-//     res.status(500).send({ error: 'Internal Server Error' });
-//   }
-// });
+// Creating API for getting popular women product endpoint
+app.get('/popular', async (req, res) => {
+  try {
+    let popularItems = await Product.find({ category: 'women' });
+    if (popularItems.length > 4) {
+      let popular = popularItems.slice(0, 4);
+      res.send(popular);
+    } else {
+      res.send(popularItems);
+    }
+  } catch (error) {
+    res.status(500).send({ error: 'Internal Server Error' });
+  }
+});
 
 // // Creating middlerware to fetch user
 // const fetchUser = async (req, res, next) => {
