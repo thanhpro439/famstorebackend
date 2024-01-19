@@ -22,7 +22,7 @@ mongoose.connect(
 
 // Image storage engine
 const storage = multer.diskStorage({
-  destination: './static/media',
+  destination: path.resolve(__dirname, 'upload/images'),
   filename: (req, file, cb) => {
     return cb(
       null,
@@ -33,14 +33,14 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-// // Create upload endpoint for images
-// app.use('/images', express.static('upload/images'));
-// app.post('/upload', upload.single('product'), (req, res) => {
-//   res.json({
-//     success: 1,
-//     image_url: `https://famstorebackend.vercel.app/images/${req.file.filename}`,
-//   });
-// });
+// Create upload endpoint for images
+app.use('/images', express.static('upload/images'));
+app.post('/upload', upload.single('product'), (req, res) => {
+  res.json({
+    success: 1,
+    image_url: `https://famstorebackend.vercel.app/images/${req.file.filename}`,
+  });
+});
 
 // Schema for creating new User
 const Users = mongoose.model('User', {
