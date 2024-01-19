@@ -22,7 +22,7 @@ mongoose.connect(
 
 // Image storage engine
 const storage = multer.diskStorage({
-  destination: path.resolve(__dirname, 'upload/images'),
+  destination: './upload/images',
   filename: (req, file, cb) => {
     return cb(
       null,
