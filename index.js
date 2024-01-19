@@ -16,9 +16,9 @@ app.use(express.json());
 // Using cors middleware
 app.use(cors());
 
-// mongoose.connect(
-//   `mongodb+srv://${env.DB_USER}:${env.DB_PASSWORD}@famstore.bc1gtb2.mongodb.net/famstore`
-// );
+mongoose.connect(
+  `mongodb+srv://${env.DB_USER}:${env.DB_PASSWORD}@famstore.bc1gtb2.mongodb.net/famstore`
+);
 
 // // Image storage engine
 // const storage = multer.diskStorage({
